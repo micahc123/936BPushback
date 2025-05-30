@@ -5,30 +5,26 @@
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
 #include "pros/adi.hpp"
+#include "pros/rotation.hpp"
+#include "pros/imu.hpp"
 #include "robot/movement.h"
-#include "robot/clamp.h"
 #include "robot/selector.h"
-#include "robot/intake.h"
-#include "robot/wall.h"
-#include "robot/doinker.h"
 #include "lemlib/api.hpp"
 
 
 
 //ports
-#define CLAMP_PORT 'G'
-#define DOINKER_PORT 'H'    
-#define LEFT_MOTOR_1 1
-#define LEFT_MOTOR_2 2
-#define LEFT_MOTOR_3 3
-#define RIGHT_MOTOR_1 7
-#define RIGHT_MOTOR_2 8
-#define RIGHT_MOTOR_3 9
-#define INTAKE_MOTOR 6
-#define WALL_MOTOR_1 18
-#define WALL_MOTOR_2 10
-#define INTAKE_COLOR_SENSOR_PORT 1
-#define WALL_ROTATION_SENSOR 18
+#define LEFT_MOTOR_1 11
+#define LEFT_MOTOR_2 12
+#define LEFT_MOTOR_3 13
+#define RIGHT_MOTOR_1 1
+#define RIGHT_MOTOR_2 2
+#define RIGHT_MOTOR_3 3
+
+// sensor ports
+#define HORIZONTAL_ENCODER_PORT 4
+#define VERTICAL_ENCODER_PORT 5
+#define IMU_PORT 6
 
 
 //controller
@@ -53,11 +49,6 @@ extern bool wallToggle;
 
 namespace subsystems {
     class Movement;
-    class Clamp;
-    class Roller;
-    class Intake;
-    class Wall;
-    class Doinker;
     class Selector;
     class Auton;
 }
@@ -66,10 +57,21 @@ namespace subsystems {
 // motors
 extern pros::Motor leftFrontMotor;
 extern pros::Motor leftBackMotor;
+extern pros::Motor leftMiddleMotor;
 extern pros::Motor rightFrontMotor;
 extern pros::Motor rightBackMotor;
+extern pros::Motor rightMiddleMotor;
 extern pros::MotorGroup leftMotors;
 extern pros::MotorGroup rightMotors;
+
+// sensors
+extern pros::Rotation horizontalEncoder;
+extern pros::Rotation verticalEncoder;
+extern pros::Imu imu;
+
+// tracking wheels
+extern lemlib::TrackingWheel vertical_tracking_wheel;
+extern lemlib::TrackingWheel horizontal_tracking_wheel;
 
 
 
@@ -78,11 +80,7 @@ extern pros::ADIDigitalOut piston;
 
 // subsystem
 extern subsystems::Movement movement;
-extern subsystems::Clamp clamp;
-extern subsystems::Wall wall;
-extern subsystems::Intake intake;
 extern subsystems::Selector selector;
-extern subsystems::Doinker doinker;
 extern subsystems::Auton auton;
 // chassis
 extern lemlib::Drivetrain drivetrain;

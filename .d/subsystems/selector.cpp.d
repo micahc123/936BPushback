@@ -41,8 +41,7 @@ bin/subsystems/selector.cpp.o: src/subsystems/selector.cpp \
  include/fmt/format-inl.h include/lemlib/logger/baseSink.hpp \
  include/fmt/args.h include/lemlib/logger/message.hpp \
  include/lemlib/logger/infoSink.hpp \
- include/lemlib/logger/telemetrySink.hpp include/robot/intake.h \
- include/pros/optical.hpp include/pros/optical.h include/pros/error.h \
+ include/lemlib/logger/telemetrySink.hpp \
  include/display/lv_themes/lv_theme.h \
  include/display/lv_themes/lv_theme_templ.h \
  include/display/lv_themes/lv_theme_default.h \
@@ -132,10 +131,6 @@ include/fmt/args.h:
 include/lemlib/logger/message.hpp:
 include/lemlib/logger/infoSink.hpp:
 include/lemlib/logger/telemetrySink.hpp:
-include/robot/intake.h:
-include/pros/optical.hpp:
-include/pros/optical.h:
-include/pros/error.h:
 include/display/lv_themes/lv_theme.h:
 include/display/lv_themes/lv_theme_templ.h:
 include/display/lv_themes/lv_theme_default.h:

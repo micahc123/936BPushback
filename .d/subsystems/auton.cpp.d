@@ -13,13 +13,13 @@ bin/subsystems/auton.cpp.o: src/subsystems/auton.cpp \
  include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/globals.h \
  include/pros/rtos.hpp include/pros/misc.hpp include/pros/misc.h \
- include/pros/motors.hpp include/pros/adi.hpp include/robot/movement.h \
- include/pros/misc.hpp include/robot/clamp.h include/robot/selector.h \
- include/pros/screen.hpp include/pros/screen.h include/pros/colors.h \
- include/display/lv_core/lv_obj.h include/display/lv_conf.h \
- include/display/lv_conf_checker.h include/display/lv_core/lv_style.h \
- include/display/lv_misc/lv_color.h include/display/lv_misc/lv_area.h \
- include/display/lv_misc/lv_font.h \
+ include/pros/motors.hpp include/pros/adi.hpp include/pros/rotation.hpp \
+ include/pros/imu.hpp include/robot/movement.h include/pros/misc.hpp \
+ include/robot/selector.h include/pros/screen.hpp include/pros/screen.h \
+ include/pros/colors.h include/display/lv_core/lv_obj.h \
+ include/display/lv_conf.h include/display/lv_conf_checker.h \
+ include/display/lv_core/lv_style.h include/display/lv_misc/lv_color.h \
+ include/display/lv_misc/lv_area.h include/display/lv_misc/lv_font.h \
  include/display/lv_misc/lv_symbol_def.h \
  include/display/lv_fonts/lv_font_builtin.h \
  include/display/lv_misc/lv_anim.h include/display/lv_misc/lv_mem.h \
@@ -44,9 +44,7 @@ bin/subsystems/auton.cpp.o: src/subsystems/auton.cpp \
  include/display/lv_draw/lv_draw_line.h \
  include/display/lv_draw/lv_draw_triangle.h \
  include/display/lv_objx/lv_page.h include/display/lv_objx/lv_page.h \
- include/display/lv_objx/lv_btnm.h include/robot/intake.h \
- include/pros/optical.hpp include/pros/optical.h include/pros/error.h \
- include/robot/intake.h include/robot/wall.h include/robot/doinker.h
+ include/display/lv_objx/lv_btnm.h
 include/robot/auton.h:
 include/lemlib/api.hpp:
 include/lemlib/pid.hpp:
@@ -83,9 +81,10 @@ include/pros/misc.hpp:
 include/pros/misc.h:
 include/pros/motors.hpp:
 include/pros/adi.hpp:
+include/pros/rotation.hpp:
+include/pros/imu.hpp:
 include/robot/movement.h:
 include/pros/misc.hpp:
-include/robot/clamp.h:
 include/robot/selector.h:
 include/pros/screen.hpp:
 include/pros/screen.h:
@@ -136,10 +135,3 @@ include/display/lv_draw/lv_draw_triangle.h:
 include/display/lv_objx/lv_page.h:
 include/display/lv_objx/lv_page.h:
 include/display/lv_objx/lv_btnm.h:
-include/robot/intake.h:
-include/pros/optical.hpp:
-include/pros/optical.h:
-include/pros/error.h:
-include/robot/intake.h:
-include/robot/wall.h:
-include/robot/doinker.h:

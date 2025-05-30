@@ -40,11 +40,8 @@
  * You should add more #includes here
  */
 #include "robot/movement.h"
-#include "robot/clamp.h"
-#include "robot/intake.h"
-#include "robot/wall.h"
 #include "robot/selector.h"
-#include "robot/doinker.h"
+#include "robot/auton.h"
 
 //#include "pros/api_legacy.h"
 

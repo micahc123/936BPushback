@@ -4,10 +4,11 @@
 using namespace subsystems;
 
 void initialize() {
+    imu.reset();
+    
     chassis.calibrate();
     chassis.setPose(0, 0, 0);
     selector.init();
-
 }
 
 void disabled() {}
@@ -26,14 +27,9 @@ void opcontrol() {
             auton.test_lateral();
         }
         if (master.get_digital_new_press(DIGITAL_RIGHT)) {
-            // Test angular controller
             auton.test_angular();
         }
         
-        clamp.run();
-        intake.run();
-        wall.run();
-        doinker.run();
         selector.update();
         pros::delay(10);
     }

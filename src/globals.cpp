@@ -1,10 +1,5 @@
 #include "globals.h"
 
-bool pistonToggle = false;
-bool intakeToggle = false;
-bool climbingToggle = false;
-bool rollerToggle = false;
-bool wallToggle = false;
 
 pros::Motor leftFrontMotor(LEFT_MOTOR_1, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor leftBackMotor(LEFT_MOTOR_2, pros::E_MOTOR_GEAR_BLUE);
@@ -14,6 +9,11 @@ pros::Motor rightMiddleMotor(RIGHT_MOTOR_3, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor rightBackMotor(RIGHT_MOTOR_2, pros::E_MOTOR_GEAR_BLUE);
 pros::MotorGroup leftMotors({leftFrontMotor, leftMiddleMotor, leftBackMotor});
 pros::MotorGroup rightMotors({rightFrontMotor,rightMiddleMotor, rightBackMotor});
+
+// sensors
+pros::Rotation horizontalEncoder(HORIZONTAL_ENCODER_PORT);
+pros::Rotation verticalEncoder(VERTICAL_ENCODER_PORT);
+pros::Imu imu(IMU_PORT);
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
@@ -26,12 +26,16 @@ lemlib::Drivetrain drivetrain {
     2   //drift
 };
 
+// create tracking wheels
+lemlib::TrackingWheel vertical_tracking_wheel(&verticalEncoder, lemlib::Omniwheel::NEW_275, -2.5);
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontalEncoder, lemlib::Omniwheel::NEW_275, 4.5);
+
 lemlib::OdomSensors sensors {
-    nullptr, 
-    nullptr, 
-    nullptr, 
-    nullptr, 
-    nullptr 
+    &vertical_tracking_wheel, // vertical tracking wheel 1
+    nullptr, // vertical tracking wheel 2 (set to nullptr as we only have one)
+    &horizontal_tracking_wheel, // horizontal tracking wheel 1
+    nullptr, // horizontal tracking wheel 2 (set to nullptr as we only have one)
+    &imu // inertial sensor
 };
 
 lemlib::ControllerSettings controller(
@@ -64,9 +68,5 @@ lemlib::Chassis chassis(
 );
 
 subsystems::Movement movement(&chassis);
-subsystems::Clamp clamp(CLAMP_PORT);
-subsystems::Intake intake(INTAKE_MOTOR, INTAKE_COLOR_SENSOR_PORT);
-subsystems::Wall wall(WALL_MOTOR_1, WALL_MOTOR_2);
 subsystems::Auton auton(&chassis);
-subsystems::Selector selector(&intake, &auton);
-subsystems::Doinker doinker(DOINKER_PORT);
+subsystems::Selector selector(&auton);

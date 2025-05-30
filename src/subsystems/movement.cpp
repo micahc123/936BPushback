@@ -6,7 +6,10 @@
 namespace subsystems {
 
 Movement::Movement(lemlib::Chassis* chassis)
-    : chassis(chassis) {    }
+    : chassis(chassis) {    
+        leftMiddleMotor.set_reversed(true);
+        rightMiddleMotor.set_reversed(true);
+    }
 
 
 void Movement::drive(double leftY, double rightX) {
